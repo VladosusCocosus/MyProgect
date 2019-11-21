@@ -1,0 +1,16 @@
+<% include block/header.ejs %>
+</header>
+<style>
+.nav-bar{margin: auto auto; margin-top: 7%; width:25%; display: flex; flex-direction: column; text-align: center};
+</style>
+<div class="nav-bar">
+    <div class="form-control">
+        <form method="post">
+            <input type="date" placeholder="1 Января" name='date' сlass="form-control" style="margin-bottom: 2%;" required>
+            <input type="text" placeholder="Введите класс" name='classNumb' required сlass="form-control" style="margin-bottom: 2%;">
+            <input type="text" placeholder="Введите букву класса" name='classWord' required сlass="form-control" style="margin-bottom: 2%;">
+            <input type="text" placeholder="Напишите ДЗ" name='hometask' сlass="form-control" required style="margin-bottom: 2%;">
+            <p></p><input type="submit" value="Отправить" class="btn btn-outline-primary">
+        </form>
+    </div>
+</div>

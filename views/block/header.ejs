@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>index</title>
+  <script src="/views/block/header.ejs"></script>
+  <style>body{margin-left: 210px ;margin-right: 210px;};
+    *{margin:0px 0px;padding: 0px 0px;};@media(max-width: 720px) {.content{flex-direction: column; display: flex; margin-top: 20%;padding: 0.7% 0.7%; text-align: center;}}
+    @media(max-width: 720px){.nav-bar{margin-top: 20%;padding: 0.7% 0.7%; margin: 0px 0px;};};
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body> 
+    <header>
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark", style="width: 1920px;">
+            <a class="navbar-brand" href="#">Лицей №3</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Главная страница</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/homework">Домашние задание</a>
+                </li>
+                <% if(userId){ %>
+                  <li class="nav-item active">
+                    <a class="nav-link disabled" href="/cab">Личный кабинет</a>
+                  </li>
+                  <% } %>
+                <% if(!userId){ %> 
+                <li class="nav-item">
+                  <a class="btn btn-outline-primary" href="/auth" style="margin-left:450%;">Вход для учителей</a>
+                </li>
+    
+                <% }else{ %>
+                  <li class="nav-item">
+                    <a class="btn btn-outline-primary" href="/logout" style="margin-left:900%;">Выйти</a>
+                  </li>
+                  <% } %>
+
+            </ul>
+            </div>
+          </nav>
+  

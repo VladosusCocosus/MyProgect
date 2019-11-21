@@ -1,0 +1,32 @@
+<% include block/header.ejs %>
+<style>
+.nav-bar{margin: auto auto; margin-top: 7%; width:25%};
+a{text-decoration: none;};
+body{margin-top:60px;};
+@media(max-width: 720px){
+  .nav-bar{margin-top: 13%;padding: 0.7% 0.7%; margin: 0px 0px;};
+};
+</style>
+</header>
+<content>
+  <div class="nav-bar">
+    <form action="" method="POST">
+      <input type="date" name="Check_date" id="Check-date" placeholder="Дата" class="form-control" required>
+      <input type="text" name="Check_class" id="Check-class" placeholder="Номер класса" class="form-control" required>
+      <input type="text" name="Check_class_word" id="heck-class-word" placeholder="Буква класса" class="form-control" required>
+      <input type="submit" class="btn btn-lg btn-block btn-primary" value="Найти">
+    </form>
+  </div>
+
+  <div class="nav-bar">
+    <form method="GET">
+      <div class="form-control">
+        <% homeworkView.forEach(elem => { %>
+          <p class="form-control"><%=elem.teacher %>: <%= elem.homework %></p>
+        <% }); %>
+      </div>
+    </form>
+  </div>
+
+</content>
+</body>
