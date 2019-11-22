@@ -22,9 +22,11 @@ body{margin-top:60px}
   <div class="nav-bar-result">
     <form method="GET">
       <div class="form-control">
+      <%if(homeworkView){%>
         <% homeworkView.forEach(elem => { %>
           <p class="form-control"><%=elem.status %> | (<%=elem.teacher %>): <%= elem.homework %></p>
         <% }); %>
+      <%}%>
       </div>
     </form>
   </div>

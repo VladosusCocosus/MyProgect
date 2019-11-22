@@ -8,6 +8,7 @@ var userData = path.join(__dirname + '/users.json')
 var homeworkData = path.join(__dirname + '/homework.json')
 
 let homeworkView = []
+session.homeworkViewId = [{"homework":"а","teacher":"Владислав Разин"}]
 
 const TWOHOURS = 1000 * 60 * 60 * 2
 
@@ -73,25 +74,34 @@ app.get('/reg', Admin, function(req,res){
 });
 app.post('/reg', function(req, res){
     const{email, password, status, name, com} = req.body;
-    users.push({email:email, password:password, id:status, name:name, com:com})
+    users.push({email:email, password:password, id:status, name:name, com:com});
         fs.writeFile(userData, JSON.stringify(users), err => {
             if (err){
                 throw new Error(err)
-            }
-        })
+            };
+        });
     res.redirect('/')
-})
+});
 app.get('/cab', redirectLogin ,function(req, res){
-    const{userStatus, userName, userId} = req.session
+    const{userStatus, userName, userId} = req.session;
     res.render('cab', {userName:userName, userStatus:userStatus, userId:userId});
 });
 app.get('/homework', function(req, res){
-    const{userName, userId} = req.session
-    res.render('homework', {userName:userName, userId:userId, homeworkView});
+    const{userName, userId, homeworkViewId} = req.session;
+    if(session.homeworkViewId){
+    res.render('homework', {userName:userName, userId:userId, homeworkView:req.session.homeworkViewId});
+    }else{
+        res.render('homework', {userName:userName, userId:userId, homeworkView:homeworkViewId});
+    };
 });
 app.post('/homework', (req,res) => {
     const{Check_class, Check_date, Check_class_word} = req.body
     homeworkView =  homework.filter(elem => elem.class == Check_class && elem.date == Check_date && elem.classWord == Check_class_word)
+    if(homeworkView){
+        req.session.homeworkViewId = homeworkView
+    }else{
+        res.redirect('/homework')
+    }
     res.redirect('/homework')
 });
 app.get('/auth', function(req,res){
@@ -122,7 +132,6 @@ app.post('/CreatePage', (req,res) => {
     const{classNumb, hometask, date, classWord} = req.body
     homework.push({class:classNumb, homework:hometask, teacher:req.session.userName, date:date, classWord:classWord, status:req.session.userCom})
         fs.writeFile(homeworkData, JSON.stringify(homework), err => {
-           console.log(err)
         })
     res.redirect('/')
 })
