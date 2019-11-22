@@ -1,11 +1,13 @@
 <% include block/header.ejs %>
 <style>
-.nav-bar{margin: auto auto; margin-top: 7%; width:25%};
-a{text-decoration: none;};
-body{margin-top:60px;};
-@media(max-width: 720px){
-  .nav-bar{margin-top: 13%;padding: 0.7% 0.7%; margin: 0px 0px;};
-};
+.nav-bar{margin: auto auto; margin-top: 7%; width:35%}
+.nav-bar-result{margin: auto auto; margin-top: 1%; width: 35%;}
+a{text-decoration: none};
+body{margin-top:60px}
+@media screen and (max-width: 720px){
+  .nav-bar{margin-top: 45%; width: 80%; margin-left: 10%; margin-right: 10%;}
+  .nav-bar-result{width: 80%; margin-left: 10%; margin-right: 10%; margin-top: 1%;}
+}
 </style>
 </header>
 <content>
@@ -17,8 +19,7 @@ body{margin-top:60px;};
       <input type="submit" class="btn btn-lg btn-block btn-primary" value="Найти">
     </form>
   </div>
-
-  <div class="nav-bar">
+  <div class="nav-bar-result">
     <form method="GET">
       <div class="form-control">
         <% homeworkView.forEach(elem => { %>

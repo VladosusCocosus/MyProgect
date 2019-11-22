@@ -1,11 +1,18 @@
 <% include block/header.ejs %>
 </header>
 <style>
-.nav-bar{margin-top: 7%; padding: 0.7% 0.7%; text-align: center; margin-left: 300px; margin-right: 300px;}
+.form-control{
+    margin: auto auto; margin-top: 7%; width:35%;
+}
+@media(max-width: 720px){
+    .form-control{
+        margin-top: 45%; width: 80%; margin-left: 10%; margin-right: 10%;
+    }
+}
 </style>
 <div class="nav-bar">
     <div class="form-control">
-        <h1>Личный кабинет</h1>
+        <p>Личный кабинет</p>
         <p><%=userName %></p>
         <p><%=userStatus %></p>
         <button class="btn btn-outline-primary"><a href="/CreatePage" style="color: black; text-decoration: none;">Дать новое домашнее задание</a></button>
