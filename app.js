@@ -106,6 +106,7 @@ app.post('/auth', (req,res) => {
             req.session.userId = user.id
             req.session.userName = user.name
             req.session.userStatus = user.status
+            req.session.userCom = user.com
             res.redirect('/')
         }else{
             console.log('wrong')
@@ -119,7 +120,7 @@ app.get('/CreatePage', function(req,res){
 })
 app.post('/CreatePage', (req,res) => {
     const{classNumb, hometask, date, classWord} = req.body
-    homework.push({class:classNumb, homework:hometask, teacher:req.session.userName, date:date, classWord:classWord})
+    homework.push({class:classNumb, homework:hometask, teacher:req.session.userName, date:date, classWord:classWord, status:req.session.userCom})
         fs.writeFile(homeworkData, JSON.stringify(homework), err => {
            console.log(err)
         })

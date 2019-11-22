@@ -23,7 +23,7 @@ body{margin-top:60px}
     <form method="GET">
       <div class="form-control">
         <% homeworkView.forEach(elem => { %>
-          <p class="form-control"><%=elem.teacher %>: <%= elem.homework %></p>
+          <p class="form-control"><%=elem.status %> | (<%=elem.teacher %>): <%= elem.homework %></p>
         <% }); %>
       </div>
     </form>
